@@ -28,11 +28,6 @@ So let’s start implementing the user management system with PHP and MySQL. Bef
  <li>Delete user.</li>
 </ul>
 
-![Login](https://github.com/tanishaverma/user-registration/assets/79139713/6b2ef19c-7ede-43b3-977d-758dabe31482)
-![Register](https://github.com/tanishaverma/user-registration/assets/79139713/f3e7c0a5-f515-42d0-b3cd-f72297d83bc2)
-![Profile](https://github.com/tanishaverma/user-registration/assets/79139713/dd8a09a8-8e73-403e-b8dc-971f77c50f4b)
-![List](https://github.com/tanishaverma/user-registration/assets/79139713/ac2340df-f4aa-4a80-8ea5-9e235caf7533)
-</div>
 
 ![Login](https://github.com/tanishaverma/user-registration/assets/79139713/6b2ef19c-7ede-43b3-977d-758dabe31482)
 ![Register](https://github.com/tanishaverma/user-registration/assets/79139713/f3e7c0a5-f515-42d0-b3cd-f72297d83bc2)
