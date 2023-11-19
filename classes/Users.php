@@ -401,19 +401,25 @@ class Users{
 			  $img_ex_lc = strtolower($img_ex);
 
 			  $allowed_exs = array("jpg", "jpeg", "png"); 
-        if(in_array($img_ex_lc, $allowed_exs)) {
+        $new_img_name = '';
+        if(in_array($img_ex_lc, $allowed_exs) && !empty($img_ex_lc)) {
 
           $new_img_name = uniqid("IMG-", true).'.'.$img_ex_lc;
           $img_upload_path = 'uploads/'.$new_img_name;
           move_uploaded_file($tmp_name, $img_upload_path);
+        }
+        $imageBind ='';
+        if(!empty($new_img_name)){
+          $imageBind = ", image_url = :image_url";
+        }
 
           $sql = "UPDATE tbl_users SET
             name = :name,
             username = :username,
             email = :email,
             mobile = :mobile,
-            roleid = :roleid,
-            image_url = :image_url
+            roleid = :roleid
+            ".$imageBind."
             WHERE id = :id";
             $stmt= $this->db->pdo->prepare($sql);
             $stmt->bindValue(':name', $name);
@@ -421,10 +427,12 @@ class Users{
             $stmt->bindValue(':email', $email);
             $stmt->bindValue(':mobile', $mobile);
             $stmt->bindValue(':roleid', $roleid);
-            $stmt->bindValue(':image_url', $new_img_name);
+            if(!empty($new_img_name)){
+              $stmt->bindValue(':image_url', $new_img_name);
+            }
             $stmt->bindValue(':id', $userid);
             $result =   $stmt->execute();
-        }
+        
         if ($result) {
           echo "<script>location.href='index.php';</script>";
           Session::set('msg', '<div class="alert alert-success alert-dismissible mt-3" id="flash-msg">

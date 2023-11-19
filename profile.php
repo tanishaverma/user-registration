@@ -69,7 +69,7 @@ if (isset($updateUser)) {
                     <img height="100" width="100" src="uploads/<?=$getUinfo->image_url;?>">
                   </div>
                   <div class="col-md-10">
-                  <input type="file" name="my_image" class="form-control" required>
+                  <input type="file" name="my_image" class="form-control">
                   </div>
                   </div>
                   
