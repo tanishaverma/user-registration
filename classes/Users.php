@@ -302,7 +302,6 @@ class Users{
         return false;
       }
     }
-  //
   //   Get Single User Information By Id Method
     public function updateUserByIdInfo($userid, $data){
       $name = $data['name'];

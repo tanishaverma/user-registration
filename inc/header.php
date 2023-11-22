@@ -1,6 +1,5 @@
 <?php
 ini_set('display_errors', 0);
-// error_reporting(E_ERROR | E_PARSE);
 $filepath = realpath(dirname(__FILE__));
 include_once $filepath."/../lib/Session.php";
 Session::init();
@@ -26,9 +25,6 @@ $users = new Users();
   <body>
 <?php
 if (isset($_GET['action']) && $_GET['action'] == 'logout') {
-    // Session::set('logout', '<div class="alert alert-success alert-dismissible mt-3" id="flash-msg">
-    // <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    // <strong>Success !</strong> You are Logged Out Successfully !</div>');
     Session::destroy();
 }
 ?>

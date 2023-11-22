@@ -1,15 +1,9 @@
 <?php
 
 include "config/config.php";
-
-
 // Class Databse
-
 class  Database{
-
   public $pdo;
-
-
   // Construct Class
   public function __construct(){
 
@@ -22,17 +16,6 @@ class  Database{
       } catch (PDOException $e) {
         die("Connection error...".$e->getMessage());
       }
-
     }
-
-
   }
-
-
-
-
-
-
-
-
 }

@@ -14,10 +14,6 @@ if (isset($register)) {
         $(document).ready(function () {
             $('#register').on('click', function (e) {
                var isFormValid =  $('#basic-form').validate();
-                //  var ext = $('#my_image').val().split('.').pop().toLowerCase();
-                //  if($.inArray(ext, ['png','jpg','jpeg']) == -1) {
-                //       alert('invalid extension!');
-                //   }
                if(isFormValid){
                 $('form#basic-form').submit();
                }
