@@ -31,7 +31,6 @@ class Users{
   }
   // User Registration Method
   public function userRegistration($data){
-    print_r(8347656);die;
     $name = $data['name'];
     $username = $data['username'];
     $email = $data['email'];

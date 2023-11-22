@@ -13,23 +13,33 @@ Session::CheckSession();
         echo  $changePass;
     }
     ?>
+<script>
+        $(document).ready(function () {
+            $('#changepass').on('click', function (e) {
+               var isFormValid =  $('#basic-form').validate();
+               if(isFormValid){
+                $('form#basic-form').submit();
+               }
+            });
+          });
+</script>
  <div class="card ">
    <div class="card-header">
           <h3>Change your password <span class="float-right"> <a href="profile.php?id=<?php  ?>" class="btn btn-primary">Back</a> </h3>
         </div>
         <div class="card-body">
           <div style="width:600px; margin:0px auto">
-          <form class="" action="" method="POST">
+          <form id="basic-form" class="" action="" method="POST">
               <div class="form-group">
                 <label for="old_password">Old Password</label>
-                <input type="password" name="old_password"  class="form-control">
+                <input type="password" name="old_password"  class="form-control" data-validate="required">
               </div>
               <div class="form-group">
                 <label for="new_password">New Password</label>
-                <input type="password" name="new_password"  class="form-control">
+                <input type="password" name="new_password"  class="form-control" data-validate="required">
               </div>
               <div class="form-group">
-                <button type="submit" name="changepass" class="btn btn-success">Change password</button>
+                <button type="submit" name="changepass" id="changepass" class="btn btn-success">Change password</button>
               </div>
           </form>
         </div>

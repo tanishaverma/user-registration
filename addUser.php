@@ -91,7 +91,7 @@ if (isset($userAdd)) {
                 </div>
                 <div class="form-group">
                   <label for="image">Profile</label>
-                  <input type="file" data-validate="required" name="my_image" id="my_image" class="form-control" >
+                  <input type="file" data-validate="required" name="my_image" id="my_image" class="form-control" accept=".jpg,.png,.jpeg" >
                   <!-- <span class="img_error_msg">This field is required</span> -->
                 </div>
                
