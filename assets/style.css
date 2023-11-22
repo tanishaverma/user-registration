@@ -54,3 +54,29 @@ h5 {
 h6 {
   font-size: 12px;
   line-height: 24px; }
+
+  .error{
+    /* border-style: solid !important;
+    border-color: #c00 !important;
+    border-width: 2px !important; */
+    color:#c00 ;
+  }
+  .psw_error_msg{
+    display: none;
+    margin-left: 10px;
+    color: red;
+  }
+  .img_error_msg{
+    display: none;
+    margin-left: 10px;
+    color: red;
+  }
+  .check_error_msg{
+    display: none;
+    margin-left: 10px;
+    color: red;
+  }
+  .error_show{
+    color: red;
+    margin-left: 10px;
+  }

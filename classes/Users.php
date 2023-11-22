@@ -1,32 +1,21 @@
 <?php
 ini_set('max_execution_time', '0');
 ini_set('upload_max_filesize', '100M');
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 include 'lib/Database.php';
 include_once 'lib/Session.php';
-
-
 class Users{
-
-
   // Db Property
   private $db;
-
   // Db __construct Method
   public function __construct(){
     $this->db = new Database();
   }
-
   // Date formate Method
    public function formatDate($date){
      // date_default_timezone_set('Asia/Dhaka');
       $strtime = strtotime($date);
     return date('Y-m-d H:i:s', $strtime);
    }
-
-
 
   // Check Exist Email Address Method
   public function checkExistEmail($email){
@@ -40,11 +29,9 @@ class Users{
       return false;
     }
   }
-
-
-
   // User Registration Method
   public function userRegistration($data){
+    print_r(8347656);die;
     $name = $data['name'];
     $username = $data['username'];
     $email = $data['email'];
@@ -58,7 +45,6 @@ class Users{
     $error = $_FILES['my_image']['error'];
     
     $checkEmail = $this->checkExistEmail($email);
-
     if ($name == "" || $username == "" || $email == "" || $mobile == "" || $password == "") {
       $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -134,15 +120,7 @@ class Users{
   <strong>Error !</strong> Something went Wrong !</div>';
           return $msg;
       }
-
-
-
     }
-
-
-
-
-
   }
   // Add New User By Admin
   public function addNewUserByAdmin($data){
@@ -234,19 +212,8 @@ class Users{
   <strong>Error !</strong> Something went Wrong !</div>';
           return $msg;
       }
-
-
-
     }
-
-
-
-
-
   }
-
-
-
   // Select All User Method
   public function selectAllUserData(){
     $sql = "SELECT * FROM tbl_users ORDER BY id DESC";
@@ -254,8 +221,6 @@ class Users{
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_OBJ);
   }
-
-
   // User login Autho Method
   public function userLoginAutho($email, $password){
     $password = SHA1($password);
@@ -275,24 +240,16 @@ class Users{
     $stmt->execute();
     return $stmt->fetch(PDO::FETCH_OBJ);
   }
-
-
-
-
     // User Login Authotication Method
     public function userLoginAuthotication($data){
       $email = $data['email'];
       $password = $data['password'];
-
-
       $checkEmail = $this->checkExistEmail($email);
-
       if ($email == "" || $password == "" ) {
         $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   <strong>Error !</strong> Email or Password not be Empty !</div>';
           return $msg;
-
       }elseif (filter_var($email, FILTER_VALIDATE_EMAIL === FALSE)) {
         $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -304,11 +261,8 @@ class Users{
   <strong>Error !</strong> Email did not Found, use Register email or password please !</div>';
           return $msg;
       }else{
-
-
         $logResult = $this->userLoginAutho($email, $password);
         $chkActive = $this->CheckActiveUser($email);
-
         if ($chkActive == TRUE) {
           $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -334,14 +288,8 @@ class Users{
     <strong>Error !</strong> Email or Password did not Matched !</div>';
             return $msg;
         }
-
       }
-
-
     }
-
-
-
     // Get Single User Information By Id Method
     public function getUserInfoById($userid){
       $sql = "SELECT * FROM tbl_users WHERE id = :id LIMIT 1";
@@ -354,12 +302,7 @@ class Users{
       }else{
         return false;
       }
-
-
     }
-
-
-
   //
   //   Get Single User Information By Id Method
     public function updateUserByIdInfo($userid, $data){
@@ -438,27 +381,14 @@ class Users{
           Session::set('msg', '<div class="alert alert-success alert-dismissible mt-3" id="flash-msg">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
           <strong>Success !</strong> Wow, Your Information updated Successfully !</div>');
-
-
-
         }else{
           echo "<script>location.href='index.php';</script>";
           Session::set('msg', '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong>Error !</strong> Data not inserted !</div>');
-
-
         }
-
-
       }
-
-
     }
-
-
-
-
     // Delete User by Id Method
     public function deleteUserById($remove){
       $sql = "DELETE FROM tbl_users WHERE id = :id ";
@@ -477,7 +407,6 @@ class Users{
             return $msg;
         }
     }
-
     // User Deactivated By Admin
     public function userDeactiveByAdmin($deactive){
       $sql = "UPDATE tbl_users SET
@@ -504,8 +433,6 @@ class Users{
             return $msg;
         }
     }
-
-
     // User Deactivated By Admin
     public function userActiveByAdmin($active){
       $sql = "UPDATE tbl_users SET
@@ -528,10 +455,6 @@ class Users{
     <strong>Error !</strong> Data not activated !</div>');
         }
     }
-
-
-
-
     // Check Old password method
     public function CheckOldPassword($userid, $old_pass){
       $old_pass = SHA1($old_pass);
@@ -546,16 +469,10 @@ class Users{
         return false;
       }
     }
-
-
-
     // Change User pass By Id
     public  function changePasswordBysingelUserId($userid, $data){
-
       $old_pass = $data['old_password'];
       $new_pass = $data['new_password'];
-
-
       if ($old_pass == "" || $new_pass == "" ) {
         $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -567,7 +484,6 @@ class Users{
   <strong>Error !</strong> New password must be at least 6 character !</div>';
           return $msg;
        }
-
          $oldPass = $this->CheckOldPassword($userid, $old_pass);
          if ($oldPass == FALSE) {
            $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
@@ -598,18 +514,6 @@ class Users{
       <strong>Error !</strong> Password did not changed !</div>';
               return $msg;
           }
-
          }
-
-
-
     }
-
-
-
-
-
-
-
-
 }
